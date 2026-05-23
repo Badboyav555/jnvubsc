@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StudyVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar glass">
+            <div class="sidebar-brand">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">StudyVault Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </a>
+                <a href="#leads" class="nav-item" data-section="leads">
+                    <span class="nav-icon">👥</span>
+                    Leads
+                </a>
+                <a href="#notes" class="nav-item" data-section="notes">
+                    <span class="nav-icon">📝</span>
+                    Notes Manager
+                </a>
+                <a href="#generate" class="nav-item" data-section="generate">
+                    <span class="nav-icon">⚡</span>
+                    Generate Links
+                </a>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    View Site
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <h1 class="section-title">Dashboard Overview</h1>
+                <div class="stats-grid">
+                    <div class="stat-card glass">
+                        <h3>Total Leads</h3>
+                        <span class="stat-number" id="totalLeads">0</span>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Today's Leads</h3>
+                        <span class="stat-number" id="todayLeads">0</span>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Total Notes</h3>
+                        <span class="stat-number" id="totalNotes">24</span>
+                    </div>
+                    <div class="stat-card glass">
+                        <h3>Active Users</h3>
+                        <span class="stat-number" id="activeUsers">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leads Section -->
+            <section id="leads" class="admin-section">
+                <div class="section-header">
+                    <h1 class="section-title">Lead Management</h1>
+                    <div class="action-bar">
+                        <div class="search-box glass">
+                            <input type="text" id="leadSearch" placeholder="Search leads...">
+                        </div>
+                        <button class="export-btn glass" id="exportCSV">Export CSV</button>
+                    </div>
+                </div>
+                <div class="leads-table glass" id="leadsTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Note</th>
+                                <th>Semester</th>
+                                <th>Stream</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <!-- Dynamically loaded -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Notes Manager Section -->
+            <section id="notes" class="admin-section">
+                <h1 class="section-title">Notes Manager</h1>
+                <div class="notes-editor glass">
+                    <div class="editor-toolbar">
+                        <select id="noteSemester" class="glass-select">
+                            <option value="sem1">Semester 1</option>
+                            <option value="sem2">Semester 2</option>
+                            <option value="sem3">Semester 3</option>
+                            <option value="sem4">Semester 4</option>
+                            <option value="sem5">Semester 5</option>
+                            <option value="sem6">Semester 6</option>
+                        </select>
+                        <input type="text" id="noteFilename" placeholder="Filename (e.g., physics-motion)" class="glass-input">
+                        <select id="noteLanguage" class="glass-select">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                        </select>
+                    </div>
+                    <textarea id="markdownEditor" class="markdown-editor" placeholder="Write your markdown here..."></textarea>
+                    <div class="editor-actions">
+                        <button class="preview-btn glass" id="previewBtn">Preview</button>
+                        <button class="save-btn glass" id="saveNoteBtn">Save Note</button>
+                    </div>
+                    <div class="preview-panel glass" id="previewPanel" style="display: none;">
+                        <h3>Preview</h3>
+                        <div id="previewContent"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Links Section -->
+            <section id="generate" class="admin-section">
+                <h1 class="section-title">Generate Note Links</h1>
+                <div class="link-generator glass">
+                    <div class="generator-form">
+                        <select id="genSemester" class="glass-select">
+                            <option value="sem1">Semester 1</option>
+                            <option value="sem2">Semester 2</option>
+                            <option value="sem3">Semester 3</option>
+                        </select>
+                        <select id="genSubject" class="glass-select">
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="maths">Mathematics</option>
+                        </select>
+                        <button class="generate-btn glass" id="generateLinks">Generate Links</button>
+                    </div>
+                    <div class="generated-links" id="generatedLinks">
+                        <!-- Generated links appear here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
