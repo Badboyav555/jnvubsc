@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - StudyVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notes.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle glass">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">हि</button>
+    </div>
+
+    <!-- Dark/Light Toggle -->
+    <div class="theme-toggle glass">
+        <button class="theme-btn" id="themeToggle">🌙</button>
+    </div>
+
+    <div class="notes-layout">
+        <!-- Sidebar with Table of Contents -->
+        <aside class="notes-sidebar glass" id="notesSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo-small">
+                    <span>📚</span> StudyVault
+                </a>
+            </div>
+            <nav class="toc-nav" id="tocNav">
+                <!-- Dynamically generated TOC -->
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="notes-content" id="notesContent">
+            <div class="notes-header glass">
+                <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+                <h1 id="noteTitle">Loading...</h1>
+                <div class="notes-meta">
+                    <span id="noteSemester">Semester 1</span>
+                    <span id="noteSubject">Physics</span>
+                </div>
+            </div>
+
+            <!-- Markdown Content -->
+            <article class="markdown-body glass" id="markdownContent">
+                <div class="loading-spinner">Loading notes...</div>
+            </article>
+
+            <!-- Premium Lock Overlay -->
+            <div class="premium-overlay" id="premiumOverlay" style="display: none;">
+                <div class="premium-popup glass">
+                    <div class="premium-icon">🔒</div>
+                    <h2>Unlock Full Notes</h2>
+                    <p>You've viewed 30% of the content. Unlock the complete notes for free!</p>
+                    <form id="unlockForm" class="unlock-form">
+                        <div class="form-group">
+                            <input type="text" id="unlockName" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="unlockMobile" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+                        </div>
+                        <button type="submit" class="unlock-btn">
+                            <span>Unlock Now</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 1L19 10L10 19L1 10L10 1Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <p class="premium-note">No OTP required. Instant access!</p>
+                </div>
+            </div>
+
+            <!-- Image Zoom Modal -->
+            <div class="image-modal" id="imageModal">
+                <span class="modal-close">&times;</span>
+                <img class="modal-content" id="modalImage">
+            </div>
+
+            <!-- Floating Actions -->
+            <div class="floating-actions">
+                <button class="float-btn" id="copyCodeBtn" title="Copy Code">
+                    📋
+                </button>
+                <button class="float-btn" id="scrollTopBtn" title="Scroll to Top">
+                    ↑
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/notes.js"></script>
+</body>
+</html>
