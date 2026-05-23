@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Notes - StudyVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">StudyVault</span>
+            </a>
+            <button class="back-btn" onclick="history.back()">← Back</button>
+        </div>
+    </nav>
+
+    <main class="unit-main">
+        <div class="unit-header glass">
+            <h1 id="unitTitle">Unit 1: Motion</h1>
+            <p id="unitInfo">Physics • Semester 1</p>
+        </div>
+
+        <div class="notes-grid" id="notesGrid">
+            <!-- Dynamically loaded -->
+        </div>
+
+        <div class="additional-resources">
+            <div class="pyq-section glass">
+                <h3>Previous Year Questions</h3>
+                <div id="pyqList"></div>
+            </div>
+            <div class="important-section glass">
+                <h3>Important Questions</h3>
+                <div id="importantList"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
